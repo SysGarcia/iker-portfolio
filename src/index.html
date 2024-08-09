@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Página personal de Iker Despau, Técnico en Gestión Forestal y del Medio Natural con más de un año de experiencia." />
+  <title>Home ⚜️</title>
+  <link href="./output.css" rel="stylesheet" />
+  <style>
+    .nav-logo-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-logo-wrapper img {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-logo-wrapper::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("../images/logo_icon.svg");
+      background-size: cover;
+      background-position: center;
+      filter: blur(10px);
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-logo-wrapper:hover::before {
+      opacity: 1;
+    }
+
+    nav {
+      background-color: transparent; /* Color de fondo inicial */
+      transition: background-color 0.1s ease; /* Transición suave para el cambio de color */
+      z-index: 100;
+    }
+
+    /* Estilo del nav cuando está scrolled */
+    .nav-scrolled {
+      background-color: rgba(0, 0, 0, 1); /* Color de fondo al hacer scroll */
+    }
+
+  </style>
+</head>
+
+<body class="h-screen flex justify-center">
+  <!-- Fondo con patrón -->
+  <div class="fixed w-full h-full bg-slate-950">
+    <div
+      class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]">
+    </div>
+  </div>
+  <!-- Contenido principal -->
+  <main class="flex flex-col items-center py-24 z-10">
+    <nav class="p-4 fixed top-0 w-full">
+      <div class="max-w-3xl mx-auto flex justify-between items-center">
+        <div class="nav-logo-wrapper">
+          <img src="../images/logo_icon.svg" class="max-w-12 cursor-pointer" alt="Logo" />
+        </div>
+        <div class="space-x-6">
+          <a href="#about" class="text-stone-200 hover:text-forest transition duration-300">Sobre mí</a>
+          <a href="#projects" class="text-stone-200 hover:text-forest transition duration-300">Proyectos</a>
+          <a href="#contact" class="text-stone-200 hover:text-forest transition duration-300">Contacto</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="p-4 max-w-5xl flex flex-col mt-8">
+      <img src="../images/foto_iker.jpg" alt="Foto de Iker Despau"
+        class="cursor-pointer w-16 h-16 rounded-full object-cover object-center border-gray-700" />
+      <h1 id="title"
+        class="tall:mt-7 mt-5 animate-bounce animate-twice animate-ease-in-out animate-normal animate-fill-forwards text-5xl font-bold text-stone-100">
+        Hola! Soy Iker Despau
+      </h1>
+      <span
+        class="inline-flex items-center justify-center mt-2 px-2 py-1 bg-forest hover:bg-light_forest transition ease-in-out duration-500 rounded text-sm font-semibold text-stone-900 align-middle max-w-52"
+        style="line-height: 1.2">
+        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path
+            d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z" />
+        </svg>
+        <span class="ml-1">Disponible para trabajar!</span>
+      </span>
+      <div class="introduction max-w-2xl">
+        <p class="py-6 text-xl text-stone-100">
+          <span class="font-bold">+1 año de experiencia.</span>
+          <span class="text-light_forest">Técnico en Gestión Forestal y del Medio Natural.</span><span
+            class="text-sky-300"> De Madrid, España.</span> Especializado
+          en crear experiencias únicas.
+        </p>
+      </div>
+      <div id="info" class="flex flex-row space-x-3 tall:space-x-0 tall:flex-col tall:space-y-3">
+        <a href="#"
+          class="text-base text-slate-900 hover:bg-slate-900 duration-500 border-slate-700 border-2 bg-slate-950 text-center rounded-full flex items-center justify-center space-x-1 w-20 h-9 no-underline">
+          <img src="../images/cv_icono.png" alt="foto de CV" class="w-6 invert" />
+          <span class="text-slate-50">CV</span>
+        </a>
+        <a href="#"
+          class="text-base text-slate-900 hover:bg-slate-900 duration-500 border-slate-700 border-2 bg-slate-950 text-center rounded-full flex items-center justify-center space-x-1 w-28 h-9 no-underline">
+          <img src="../images/linkedin_icono.png" alt="foto de linkedin" class="w-5 invert" />
+          <span class="text-slate-50">LinkedIn</span>
+        </a>
+        <a href="#"
+          class="text-base hover:bg-slate-900 text-slate-900 duration-500 border-slate-700 border-2 bg-slate-950 text-center rounded-full flex items-center justify-center space-x-1 w-60 h-9 no-underline">
+          <img src="../images/mail_icon.png" alt="foto de mail" class="w-5 invert" />
+          <span class="text-slate-50">Ikerdespau29@gmail.com</span>
+        </a>
+      </div>
+    </header>
+
+
+    <ol class="relative border-s border-gray-200 dark:border-gray-700 mt-16 max-w-3xl m-10">                  
+      <li class="mb-10 ms-6">            
+          <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-forest">
+              <svg class="w-2.5 h-2.5 text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+              </svg>
+          </span>
+          <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">Pikolin<span class="bg-forest text-gray-900 font-semibold text-sm me-2 px-2.5 py-0.5 rounded  ms-3">Última novedad</span></h3>
+          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">5 Agosto 2024 - Actualidad</time>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ubicación: Edificio Grupo PIKOLIN, C. de Rey Pastor, 5, 28914 Leganés, Madrid</p>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Web: <a class="text-blue-400 dark:text-blue-500" href="https://www.pikolin.com/es">https://www.pikolin.com/es</a></p>
+          <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Encargado de la Gestión de Inventario: Responsable de la administración y organización eficiente del inventario, asegurando que todos los productos estén correctamente identificados, ubicados y accesibles. Esto incluye la supervisión del flujo de mercancías dentro y fuera del almacén, la verificación de las existencias mediante controles periódicos, y la implementación de sistemas para optimizar el espacio y el acceso a los productos.</p>
+      </li>
+      <li class="mb-10 ms-6">
+          <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-forest">
+              <svg class="w-2.5 h-2.5 text-gray-900 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+              </svg>
+          </span>
+          <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Grado superior en Gestión Forestal y del Medio Natural.</h3>
+          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2022-2024</time>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ubicación: Av. Viveros, 1, 28670 Villaviciosa de Odón, Madrid</p>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Web: <a class="text-blue-400 dark:text-blue-500" href="https://www.educa2.madrid.org/web/centro.ies.capacitacionagraria.villaviciosa">https://www.educa2.madrid.org/web/centro.ies.capacitacionagraria.villaviciosa</a></p>
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Adquisición de los principios básicos para gestionar y conservar los recursos naturales de manera sostenible. Introducción a la importancia de los ecosistemas y a las técnicas fundamentales para su protección. Comprensión inicial de la planificación y ejecución de proyectos que promuevan un equilibrio adecuado entre el uso responsable de los recursos y su conservación a largo plazo.</p>
+      </li>
+      <li class="ms-6">
+          <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-forest">
+              <svg class="w-2.5 h-2.5 text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+              </svg>
+          </span>
+          <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Bachillerato de Ciencias de la Salud.<h3>
+          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2020-2022</time>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ubicación: Av. de Nuevo Versalles, 6, 28942 Fuenlabrada, Madrid</p>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Web: <a class="text-blue-400 dark:text-blue-500" href="https://site.educa.madrid.org/ies.carpediem.fuenlabrada/">https://site.educa.madrid.org/ies.carpediem.fuenlabrada/</a></p>
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Formación en los fundamentos de las ciencias de la salud, abarcando asignaturas clave como biología y química . Desarrollo de conocimientos básicos sobre el cuerpo humano, procesos biológicos y principios químicos, con una orientación hacia el estudio de la salud y la medicina. Preparación para estudios superiores en áreas como medicina, enfermería, biotecnología o investigación científica, enfocándose en el entendimiento y la aplicación de conceptos científicos para la mejora del bienestar y la salud.</p>
+      </li>
+  </ol>
+  
+  
+  </main>
+  <script>
+    // Espera a que el contenido de la página se haya cargado
+    document.addEventListener('DOMContentLoaded', function() {
+      // Selecciona el elemento del menú de navegación
+      const nav = document.querySelector('nav');
+  
+      // Función que añade o quita la clase nav-scrolled según la posición de scroll
+      function handleScroll() {
+        if (window.scrollY > 50) { // Cambia 50 por la cantidad de desplazamiento deseada
+          nav.classList.add('nav-scrolled');
+        } else {
+          nav.classList.remove('nav-scrolled');
+        }
+      }
+  
+      // Añade un listener para el evento de scroll en la ventana
+      window.addEventListener('scroll', handleScroll);
+  
+      // Llama a la función para aplicar el estilo correcto al cargar la página
+      handleScroll();
+    });
+  </script>
+  
+</body>
+
+</html>
