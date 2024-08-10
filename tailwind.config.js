@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       colors: {
         forest:"#50b552",
-        light_forest:"#6ad46c"
+        light_forest:"#6ad46c",
+        stratos:"#000838"
       },
       screens: {
         'tall': { 'raw': '(max-width: 600px)' },

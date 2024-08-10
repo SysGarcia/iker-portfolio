@@ -40,16 +40,66 @@
     }
 
     nav {
-      background-color: transparent; /* Color de fondo inicial */
-      transition: background-color 0.1s ease; /* Transición suave para el cambio de color */
+      background-color: transparent;
+      /* Color de fondo inicial */
+      transition: background-color 0.2s ease;
+      /* Transición suave para el cambio de color */
       z-index: 100;
     }
 
     /* Estilo del nav cuando está scrolled */
-    .nav-scrolled {
-      background-color: rgba(0, 0, 0, 1); /* Color de fondo al hacer scroll */
+    .nav-scrolled-desktop {
+      background-color: rgb(1, 9, 26, 0.97)
+        /* Color de fondo al hacer scroll */
     }
 
+    .nav-scrolled-mobile {
+      background-color: rgb(1, 9, 26, 1)
+        /* Color de fondo al hacer scroll */
+    }
+
+    #first_link,
+    #second_link,
+    #third_link,
+    #fourth_link {
+      display: inline-block;
+      position: relative;
+      text-decoration: none;
+      z-index: 2;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        color: #50b552;
+
+        &:before {
+          transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transform-origin: left;
+          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200%25' height='100%25'%3E%3Cdefs%3E%3Cstyle%3E .wave%7B animation:wave 1s ease-in-out infinite alternate; animation-delay:-0.25s; stroke:%2350b552; stroke-width:2; stroke-linecap:square; %7D @keyframes wave%7B to%7B d:path('M 0 40 Q 20 42.5 40 40 Q 60 37.5 80 40'); %7D %7D %3C/style%3E%3C/defs%3E%3Cpattern id='wavePattern' x='0' y='0' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath fill='none' class='wave' d='M 0 40 Q 20 37.5 40 40 Q 60 42.5 80 40' /%3E%3C/pattern%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='url(%23wavePattern)'%3E%3C/rect%3E%3C/svg%3E");
+          animation: waving 3s linear infinite;
+          transform: scaleX(1);
+
+          @keyframes waving {
+            to {
+              background-position: 80px 50%, 160px 50%;
+            }
+          }
+        }
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 80px;
+        left: 0;
+        bottom: -45px;
+        z-index: -1;
+        transform: scaleX(0);
+        transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1);
+        transform-origin: right;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200%25' height='100%25'%3E%3Cdefs%3E%3Cstyle%3E .wave%7B animation:wave 1s ease-in-out infinite alternate; animation-delay:-0.25s; stroke:%2350b552; stroke-width:2; stroke-linecap:square; %7D @keyframes wave%7B to%7B d:path('M 0 40 Q 20 42.5 40 40 Q 60 37.5 80 40'); %7D %7D %3C/style%3E%3C/defs%3E%3Cpattern id='wavePattern' x='0' y='0' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath fill='none' class='wave' d='M 0 40 Q 20 37.5 40 40 Q 60 42.5 80 40' /%3E%3C/pattern%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='url(%23wavePattern)'%3E%3C/rect%3E%3C/svg%3E");
+      }
+    }
   </style>
 </head>
 
@@ -63,24 +113,23 @@
   <!-- Contenido principal -->
   <main class="flex flex-col items-center py-24 z-10">
     <nav class="p-4 fixed top-0 w-full">
-      <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <div class="max-w-5xl mx-auto flex justify-between items-center">
         <div class="nav-logo-wrapper">
           <img src="../images/logo_icon.svg" class="max-w-12 cursor-pointer" alt="Logo" />
         </div>
         <div class="space-x-6">
           <a href="#about" class="text-stone-200 hover:text-forest transition duration-300">Sobre mí</a>
-          <a href="#projects" class="text-stone-200 hover:text-forest transition duration-300">Proyectos</a>
           <a href="#contact" class="text-stone-200 hover:text-forest transition duration-300">Contacto</a>
         </div>
       </div>
     </nav>
 
-    <header class="p-4 max-w-5xl flex flex-col mt-8">
+    <header class="p-4 flex flex-col mt-8  max-w-4xl">
       <img src="../images/foto_iker.jpg" alt="Foto de Iker Despau"
         class="cursor-pointer w-16 h-16 rounded-full object-cover object-center border-gray-700" />
       <h1 id="title"
         class="tall:mt-7 mt-5 animate-bounce animate-twice animate-ease-in-out animate-normal animate-fill-forwards text-5xl font-bold text-stone-100">
-        Hola! Soy Iker Despau
+        ¡Hola! Soy Iker Despau
       </h1>
       <span
         class="inline-flex items-center justify-center mt-2 px-2 py-1 bg-forest hover:bg-light_forest transition ease-in-out duration-500 rounded text-sm font-semibold text-stone-900 align-middle max-w-52"
@@ -92,7 +141,7 @@
         </svg>
         <span class="ml-1">Disponible para trabajar!</span>
       </span>
-      <div class="introduction max-w-2xl">
+      <div class="introduction">
         <p class="py-6 text-xl text-stone-100">
           <span class="font-bold">+1 año de experiencia.</span>
           <span class="text-light_forest">Técnico en Gestión Forestal y del Medio Natural.</span><span
@@ -118,72 +167,157 @@
         </a>
       </div>
     </header>
+    <div class="ml-16  tall:ml-0">
+      <div class="w-full">
+        <h1
+          class="mt-12 tall:mt-8 text-slate-50 text-3xl font-semibold ms-6 underline decoration-forest hover:decoration-light_forest duration-500">
+          Progresión</h1>
+      </div>
+      <ol class="relative border-s border-gray-200 dark:border-gray-700 mt-8 max-w-4xl m-10">
+        <li class="mb-10 ms-6" id="first_entry">
+          <span
+            class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-forest">
+            <svg class="w-3.5 h-3.5 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M7 20H4.6C4.03995 20 3.75992 20 3.54601 19.891C3.35785 19.7951 3.20487 19.6422 3.10899 19.454C3 19.2401 3 18.9601 3 18.4V9.0398C3 8.66343 3 8.47524 3.05919 8.31095C3.1115 8.16573 3.19673 8.03458 3.30819 7.9278C3.43428 7.80699 3.60625 7.73056 3.95018 7.5777L12 4L20.0498 7.5777C20.3938 7.73056 20.5657 7.80699 20.6918 7.9278C20.8033 8.03458 20.8885 8.16573 20.9408 8.31095C21 8.47524 21 8.66343 21 9.0398V18.4C21 18.9601 21 19.2401 20.891 19.454C20.7951 19.6422 20.6422 19.7951 20.454 19.891C20.2401 20 19.9601 20 19.4 20H17M7 20H17M7 20V14M17 20V14M7 14V10H17V14M7 14H17"
+                fill="currentColor" />
+            </svg>
+          </span>
+          <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">Pikolin<span
+              class="bg-forest text-gray-900 font-semibold text-sm me-2 px-2.5 py-0.5 rounded  ms-3">Última
+              novedad</span></h3>
+          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">5 Agosto 2024 -
+            Actualidad</time>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ubicación: Edificio
+            Grupo PIKOLIN, C. de Rey Pastor, 5, 28914 Leganés, Madrid</p>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Web: <a
+              class="text-blue-400 dark:text-blue-500 hover:text-blue-300 duration-200" id="first_link"
+              href="https://www.pikolin.com/es">https://www.pikolin.com/es</a></p>
+          <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 text-pretty">Encargado de la Gestión de
+            Inventario: Responsable de la administración y organización eficiente del inventario, asegurando que todos
+            los productos estén correctamente identificados, ubicados y accesibles. Esto incluye la supervisión del
+            flujo de mercancías dentro y fuera del almacén, la verificación de las existencias mediante controles
+            periódicos, y la implementación de sistemas para optimizar el espacio y el acceso a los productos.</p>
+        </li>
+        <li class="mb-10 ms-6" id="second_entry">
+          <span
+            class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-forest">
+            <svg class="w-6 h-6 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512" fill="currentColor">
+              <g>
+                <path
+                  d="M133.48,236.619c-9.394,8.673-6.982,27.397,5.385,41.863c12.368,14.45,29.996,19.131,39.374,10.427c9.378-8.643,6.967-27.397-5.401-41.832C160.47,232.642,142.842,227.945,133.48,236.619z" />
+                <path
+                  d="M338.833,243.757c-11.006,15.625-11.694,34.52-1.55,42.223c10.129,7.671,27.257,1.314,38.247-14.325c10.99-15.593,11.679-34.473,1.55-42.191C366.95,221.777,349.808,228.18,338.833,243.757z" />
+                <path
+                  d="M226.129,240.125c16.517-3.977,25.111-28.65,19.179-55.107c-5.887-26.458-24.078-44.681-40.595-40.705c-16.501,4.008-25.08,28.681-19.194,55.139C191.452,225.879,209.628,244.102,226.129,240.125z" />
+                <path
+                  d="M309.057,144.313c-16.501-3.977-34.677,14.247-40.595,40.705c-5.918,26.458,2.661,51.131,19.193,55.107c16.485,3.976,34.677-14.247,40.595-40.673C334.184,172.995,325.558,148.321,309.057,144.313z" />
+                <path
+                  d="M256,262.513c-39.374,0-68.932,62.7-68.932,83.444c0,51.005,29.558-1.613,68.932-1.613c39.39,0,68.932,52.618,68.932,1.613C324.932,325.213,295.39,262.513,256,262.513z" />
+              </g>
+            </svg>
 
 
-    <ol class="relative border-s border-gray-200 dark:border-gray-700 mt-16 max-w-3xl m-10">                  
-      <li class="mb-10 ms-6">            
-          <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-forest">
-              <svg class="w-2.5 h-2.5 text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-              </svg>
           </span>
-          <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">Pikolin<span class="bg-forest text-gray-900 font-semibold text-sm me-2 px-2.5 py-0.5 rounded  ms-3">Última novedad</span></h3>
-          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">5 Agosto 2024 - Actualidad</time>
-          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ubicación: Edificio Grupo PIKOLIN, C. de Rey Pastor, 5, 28914 Leganés, Madrid</p>
-          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Web: <a class="text-blue-400 dark:text-blue-500" href="https://www.pikolin.com/es">https://www.pikolin.com/es</a></p>
-          <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Encargado de la Gestión de Inventario: Responsable de la administración y organización eficiente del inventario, asegurando que todos los productos estén correctamente identificados, ubicados y accesibles. Esto incluye la supervisión del flujo de mercancías dentro y fuera del almacén, la verificación de las existencias mediante controles periódicos, y la implementación de sistemas para optimizar el espacio y el acceso a los productos.</p>
-      </li>
-      <li class="mb-10 ms-6">
-          <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-forest">
-              <svg class="w-2.5 h-2.5 text-gray-900 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-              </svg>
+          <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Fundación para la Investigación en
+            Etología y Biodiversidad (FIEB)</h3>
+          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Marzo de 2024 -
+            Mayo de 2024</time>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ubicación: Casarrubios
+            del Monte, (provincia de Toledo)</p>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Web: <a
+              class="text-blue-400 dark:text-blue-500 hover:text-blue-300 duration-200" id="second_link"
+              href="https://www.fiebfoundation.org/">https://www.fiebfoundation.org/</a></p>
+        </li>
+        <li class="mb-10 ms-6" id="third_entry">
+          <span
+            class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-forest">
+            <svg class="w-4 h-4 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                d="M4 19V6.2C4 5.0799 4 4.51984 4.21799 4.09202C4.40973 3.71569 4.71569 3.40973 5.09202 3.21799C5.51984 3 6.0799 3 7.2 3H16.8C17.9201 3 18.4802 3 18.908 3.21799C19.2843 3.40973 19.5903 3.71569 19.782 4.09202C20 4.51984 20 5.0799 20 6.2V17H6C4.89543 17 4 17.8954 4 19ZM4 19C4 20.1046 4.89543 21 6 21H20M9 7H15M9 11H15M19 17V21"
+                stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+
           </span>
-          <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Grado superior en Gestión Forestal y del Medio Natural.</h3>
+          <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Grado superior en Gestión Forestal y del
+            Medio Natural.</h3>
           <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2022-2024</time>
-          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ubicación: Av. Viveros, 1, 28670 Villaviciosa de Odón, Madrid</p>
-          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Web: <a class="text-blue-400 dark:text-blue-500" href="https://www.educa2.madrid.org/web/centro.ies.capacitacionagraria.villaviciosa">https://www.educa2.madrid.org/web/centro.ies.capacitacionagraria.villaviciosa</a></p>
-          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Adquisición de los principios básicos para gestionar y conservar los recursos naturales de manera sostenible. Introducción a la importancia de los ecosistemas y a las técnicas fundamentales para su protección. Comprensión inicial de la planificación y ejecución de proyectos que promuevan un equilibrio adecuado entre el uso responsable de los recursos y su conservación a largo plazo.</p>
-      </li>
-      <li class="ms-6">
-          <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-forest">
-              <svg class="w-2.5 h-2.5 text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-              </svg>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ubicación: Av.
+            Viveros, 1, 28670 Villaviciosa de Odón, Madrid</p>
+          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Web: <a
+              class="text-blue-400 dark:text-blue-500 hover:text-blue-300 duration-200" id="third_link"
+              href="https://www.educa2.madrid.org/web/centro.ies.capacitacionagraria.villaviciosa">https://www.educa2.madrid.org/web/centro.ies.capacitacionagraria.villaviciosa</a>
+          </p>
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400 text-pretty">Adquisición de los principios
+            básicos para gestionar y conservar los recursos naturales de manera sostenible. Introducción a la
+            importancia de los ecosistemas y a las técnicas fundamentales para su protección. Comprensión inicial de la
+            planificación y ejecución de proyectos que promuevan un equilibrio adecuado entre el uso responsable de los
+            recursos y su conservación a largo plazo.</p>
+        </li>
+        <li class="ms-6" id="fourth-entry">
+          <span
+            class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-forest">
+            <svg class="w-4 h-4 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                d="M4 19V6.2C4 5.0799 4 4.51984 4.21799 4.09202C4.40973 3.71569 4.71569 3.40973 5.09202 3.21799C5.51984 3 6.0799 3 7.2 3H16.8C17.9201 3 18.4802 3 18.908 3.21799C19.2843 3.40973 19.5903 3.71569 19.782 4.09202C20 4.51984 20 5.0799 20 6.2V17H6C4.89543 17 4 17.8954 4 19ZM4 19C4 20.1046 4.89543 21 6 21H20M9 7H15M9 11H15M19 17V21"
+                stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </span>
           <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Bachillerato de Ciencias de la Salud.<h3>
-          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2020-2022</time>
-          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ubicación: Av. de Nuevo Versalles, 6, 28942 Fuenlabrada, Madrid</p>
-          <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Web: <a class="text-blue-400 dark:text-blue-500" href="https://site.educa.madrid.org/ies.carpediem.fuenlabrada/">https://site.educa.madrid.org/ies.carpediem.fuenlabrada/</a></p>
-          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Formación en los fundamentos de las ciencias de la salud, abarcando asignaturas clave como biología y química . Desarrollo de conocimientos básicos sobre el cuerpo humano, procesos biológicos y principios químicos, con una orientación hacia el estudio de la salud y la medicina. Preparación para estudios superiores en áreas como medicina, enfermería, biotecnología o investigación científica, enfocándose en el entendimiento y la aplicación de conceptos científicos para la mejora del bienestar y la salud.</p>
-      </li>
-  </ol>
-  
-  
+              <time
+                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">2020-2022</time>
+              <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ubicación: Av. de
+                Nuevo Versalles, 6, 28942 Fuenlabrada, Madrid</p>
+              <p class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Web: <a
+                  class="text-blue-400 dark:text-blue-500  hover:text-blue-300 duration-200" id="fourth_link"
+                  href="https://site.educa.madrid.org/ies.carpediem.fuenlabrada/">https://site.educa.madrid.org/ies.carpediem.fuenlabrada/</a>
+              </p>
+              <p class="text-base font-normal text-gray-500 dark:text-gray-400 text-pretty ">Formación en los
+                fundamentos de las ciencias de la salud, abarcando asignaturas clave como biología y química. Desarrollo
+                de conocimientos básicos sobre el cuerpo humano, procesos biológicos y principios químicos, con una
+                orientación hacia el estudio de la salud y la medicina. Preparación para estudios superiores en áreas
+                como medicina, enfermería, biotecnología o investigación científica, enfocándose en el entendimiento y
+                la aplicación de conceptos científicos para la mejora del bienestar y la salud.</p>
+        </li>
+      </ol>
+    </div>
+
+
   </main>
   <script>
     // Espera a que el contenido de la página se haya cargado
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Selecciona el elemento del menú de navegación
       const nav = document.querySelector('nav');
-  
+
       // Función que añade o quita la clase nav-scrolled según la posición de scroll
       function handleScroll() {
-        if (window.scrollY > 50) { // Cambia 50 por la cantidad de desplazamiento deseada
-          nav.classList.add('nav-scrolled');
+        if (window.scrollY > 50) {
+          if (window.innerWidth >= 600) {
+            nav.classList.add('nav-scrolled-desktop');
+            nav.classList.remove('nav-scrolled-mobile');
+          } else {
+            nav.classList.add('nav-scrolled-mobile');
+            nav.classList.remove('nav-scrolled-desktop');
+          }
         } else {
-          nav.classList.remove('nav-scrolled');
+          nav.classList.remove('nav-scrolled-desktop');
+          nav.classList.remove('nav-scrolled-mobile');
         }
       }
-  
+
       // Añade un listener para el evento de scroll en la ventana
       window.addEventListener('scroll', handleScroll);
-  
+
       // Llama a la función para aplicar el estilo correcto al cargar la página
       handleScroll();
     });
   </script>
-  
+
 </body>
 
 </html>
